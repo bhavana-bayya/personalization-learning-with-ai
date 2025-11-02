@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduTutor AI - Personalized Learning</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #f8f8f8;
+    }
+
+    p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    input {
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      outline: none;
+    }
+
+    button {
+      background-color: #00c6ff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0072ff;
+    }
+
+    .output {
+      margin-top: 20px;
+      text-align: left;
+      background: rgba(0,0,0,0.3);
+      padding: 15px;
+      border-radius: 10px;
+      min-height: 80px;
+      white-space: pre-wrap;
+      overflow-y: auto;
+    }
+
+    .typing {
+      border-right: 2px solid #fff;
+      display: inline-block;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { border-color: transparent; }
+      25%, 75% { border-color: white; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎓 EduTutor AI</h1>
+    <p>Personalized Learning Assistant using Generative AI</p>
+
+    <input type="text" id="username" placeholder="Enter your name">
+    <input type="text" id="topic" placeholder="Enter a topic you want to learn (e.g. Photosynthesis)">
+    <button onclick="generateLesson()">Generate Lesson</button>
+
+    <div class="output" id="output"></div>
+  </div>
+
+  <script>
+    const outputDiv = document.getElementById("output");
+
+    function typeEffect(element, text, speed = 30) {
+      let i = 0;
+      element.innerHTML = "";
+      const interval = setInterval(() => {
+        element.innerHTML = text.substring(0, i) + '<span class="typing"></span>';
+        i++;
+        if (i > text.length) {
+          clearInterval(interval);
+          element.innerHTML = text;
+        }
+      }, speed);
+    }
+
+    function generateLesson() {
+      const user = document.getElementById("username").value.trim();
+      const topic = document.getElementById("topic").value.trim();
+      if (!topic) {
+        outputDiv.innerHTML = "⚠ Please enter a topic to generate personalized learning content.";
+        return;
+      }
+
+      const student = user ? user : "Learner";
+
+      // Simulated Generative AI content
+      const responses = [
+        👋 Hello ${student}! Let's explore *${topic}* in an easy way.\n\n${topic} is one of the most fascinating topics in learning. Here’s a simplified explanation:,
+        ✨ Key points about ${topic}:\n1️⃣ Basic concept\n2️⃣ How it works\n3️⃣ Real-life examples\n4️⃣ Why it’s important,
+        💡 Tip: To remember ${topic}, relate it to something you already know. Personalized repetition helps your brain store it better.,
+        ✅ Quick Quiz:\nQuestion: What is one main idea you learned about ${topic}?\nTry answering it aloud!,
+        🌱 Great work, ${student}! Keep learning every day with EduTutor AI — your personalized AI study partner.
+      ];
+
+      let combinedText = responses.join("\n\n");
+      typeEffect(outputDiv, combinedText, 20);
+    }
+  </script>
+</body>
+</html>
