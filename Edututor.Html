@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduTutor AI - Personalized Learning</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #6f86d6, #48c6ef);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #222;
+    }
+
+    .container {
+      background: white;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 80%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #aaa;
+      outline: none;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    input:focus {
+      border-color: #48c6ef;
+      box-shadow: 0 0 10px rgba(72, 198, 239, 0.3);
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #48c6ef, #6f86d6);
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .output {
+      margin-top: 25px;
+      background: #f4f8ff;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: left;
+      line-height: 1.6;
+      font-size: 1rem;
+      color: #333;
+      display: none;
+      white-space: pre-line;
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎓 EduTutor AI</h1>
+    <h2>Personalized Learning with Generative AI</h2>
+    <p>Enter a topic you want to learn about:</p>
+    <input type="text" id="topic" placeholder="e.g., Quantum Physics, Python Programming" />
+    <br />
+    <button onclick="generateLearningPlan()">Generate Plan</button>
+
+    <div class="output" id="output"></div>
+
+    <footer>© 2025 EduTutor AI | Smart Personalized Learning</footer>
+  </div>
+
+  <script>
+    function generateLearningPlan() {
+      const topic = document.getElementById('topic').value.trim();
+      const outputDiv = document.getElementById('output');
+
+      if (topic === "") {
+        outputDiv.style.display = 'block';
+        outputDiv.textContent = "⚠ Please enter a topic first.";
+        return;
+      }
+
+      // Simulated AI-generated learning plan
+      const aiResponses = [
+        📘 Topic: ${topic}\n\n🧠 Personalized Learning Plan:\n1️⃣ Start with the basics – watch an introductory video on ${topic}.\n2️⃣ Read a beginner-friendly article or e-book.\n3️⃣ Practice 15 mins daily using interactive quizzes.\n4️⃣ Explore real-world applications.\n5️⃣ Use EduTutor AI Chat to ask specific questions.\n\n💡 Tip: Reflect on what you learned after every session!,
+        🎯 Smart Study Plan for ${topic}:\n• Learn the core concepts.\n• Use flashcards for key terms.\n• Watch 3 short videos for visual understanding.\n• Take a quick quiz at the end.\n\n✨ Motivation: "Consistency beats intensity.",
+        📚 ${topic} Mastery Path:\n1. Understand key terms.\n2. Learn via examples and projects.\n3. Test your knowledge through challenges.\n4. Get AI feedback on your progress.\n\n🚀 Stay curious and enjoy learning!
+      ];
+
+      const randomPlan = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+
+      outputDiv.style.display = 'block';
+      outputDiv.textContent = randomPlan;
+    }
+  </script>
+</body>
+</html>
